@@ -9,24 +9,26 @@ namespace SoftUni.Models
     {
         public SoftUniContext()
         {
+
         }
 
         public SoftUniContext(DbContextOptions<SoftUniContext> options)
             : base(options)
         {
+
         }
 
-        public virtual DbSet<Address> Addresses { get; set; }
-        public virtual DbSet<Department> Departments { get; set; }
-        public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<Project> Projects { get; set; }
-        public virtual DbSet<Town> Towns { get; set; }
+        public virtual DbSet<Address> Addresses { get; set; } = null!;
+        public virtual DbSet<Department> Departments { get; set; } = null!;
+        public virtual DbSet<Employee> Employees { get; set; } = null!;
+        public virtual DbSet<Project> Projects { get; set; } = null!;
+        public virtual DbSet<Town> Towns { get; set; } = null!;
+        public virtual DbSet<EmployeeProject> EmployeesProjects { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=DESKTOP-HDGA7G7\\SQLEXPRESS;Database=SoftUni;Integrated Security=True;Encrypt=False");
             }
         }
