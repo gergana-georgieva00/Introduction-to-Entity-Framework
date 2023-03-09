@@ -119,22 +119,6 @@ namespace SoftUni.Models
                     .HasForeignKey(d => d.ManagerId)
                     .HasConstraintName("FK_Employees_Employees");
 
-                entity.HasMany(d => d.Projects)
-                    .WithMany(p => p.Employees)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "EmployeesProject",
-                        l => l.HasOne<Project>().WithMany().HasForeignKey("ProjectId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_EmployeesProjects_Projects"),
-                        r => r.HasOne<Employee>().WithMany().HasForeignKey("EmployeeId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_EmployeesProjects_Employees"),
-                        j =>
-                        {
-                            j.HasKey("EmployeeId", "ProjectId");
-
-                            j.ToTable("EmployeesProjects");
-
-                            j.IndexerProperty<int>("EmployeeId").HasColumnName("EmployeeID");
-
-                            j.IndexerProperty<int>("ProjectId").HasColumnName("ProjectID");
-                        });
             });
 
             modelBuilder.Entity<Project>(entity =>
