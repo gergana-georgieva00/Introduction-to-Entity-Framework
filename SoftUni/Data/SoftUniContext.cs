@@ -153,6 +153,10 @@ namespace SoftUni.Models
                 entity.HasOne(ep => ep.Employee)
                       .WithMany(e => e.EmployeeProjects)
                       .HasForeignKey(ep => ep.EmployeeId);
+
+                entity.HasOne(ep => ep.Project)
+                      .WithMany(e => e.EmployeeProjects)
+                      .HasForeignKey(ep => ep.ProjectId);
             });
 
             OnModelCreatingPartial(modelBuilder);
