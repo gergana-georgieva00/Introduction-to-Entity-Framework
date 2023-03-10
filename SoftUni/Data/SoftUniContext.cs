@@ -147,6 +147,11 @@ namespace SoftUni.Models
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<EmployeeProject>(entity =>
+            {
+                entity.HasKey(pk => new object[] { });
+            });
+
             OnModelCreatingPartial(modelBuilder);
         }
 
