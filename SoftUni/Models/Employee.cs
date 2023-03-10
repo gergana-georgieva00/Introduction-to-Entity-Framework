@@ -9,7 +9,7 @@ namespace SoftUni.Models
         {
             Departments = new HashSet<Department>();
             InverseManager = new HashSet<Employee>();
-            Projects = new HashSet<Project>();
+            EmployeeProjects = new HashSet<EmployeeProject>();
         }
 
         public int EmployeeId { get; set; }
